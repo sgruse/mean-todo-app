@@ -1,3 +1,5 @@
+import _ from 'lodash';
+
 export default function($scope) {
 
   let params = {
@@ -33,6 +35,10 @@ export default function($scope) {
   $scope.updateTask = (todo) => {
     todo.task = todo.updatedTask;
     todo.isEditing = false;
+  }
+
+  $scope.deleteTask = todoToDelete => {
+    _.remove($scope.todos, todo => todo.task === todoToDelete.task);
   }
 
   $scope.createTask = () => {
